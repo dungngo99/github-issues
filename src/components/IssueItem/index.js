@@ -23,6 +23,7 @@ export default function IssueItem({ item }) {
         src={item.user.avatar_url}
         alt="..."
       />
+      
       <Card.Body className="col-md-10 dn-issue-body text-left" onClick={showModal}>
         <Card.Title>{`#${item.number} ${item.title}`}</Card.Title>
 
@@ -38,9 +39,9 @@ export default function IssueItem({ item }) {
         </div>
 
         <div className="dn-issue-footer">
-          {item.labels.map((label) => {
+          {item.labels.map((label, index) => {
             return (
-              <span className="badge badge-secondary mr-2">{label.name}</span>
+              <span key={`${index}-${item.id}-footer`} className="badge badge-secondary mr-2">{label.name}</span>
             )
           })}
         </div>
