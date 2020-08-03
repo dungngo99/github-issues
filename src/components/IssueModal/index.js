@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button, Alert, Card } from 'react-bootstrap'
 import { ClipLoader } from 'react-spinners'
 import Moment from 'react-moment'
@@ -53,7 +53,7 @@ export default function IssueModal({ item, hideModal, show }) {
       </Modal.Header>
 
       <Modal.Body>
-        <ReactMarkdown source={item.body}></ReactMarkdown>
+        <ReactMarkdown source={item.body} transformImageUri={(uri) => '...'}></ReactMarkdown>
       </Modal.Body>
 
       <Modal.Footer className='dn-modal-footer'>
@@ -67,8 +67,10 @@ export default function IssueModal({ item, hideModal, show }) {
         {!error && <Button onClick={loadMore}>Load more</Button>}
       </Modal.Footer>
 
-      {loading && <ClipLoader size={100} color={"red"}></ClipLoader>}
-      {error && <Alert variant="danger" className='text-center'>{errMessage}</Alert>}
+      <div className='dn-add-ons-footer'>
+        {loading && <ClipLoader size={100} color={"red"} style={{ 'margin': 'auto' }}></ClipLoader>}
+        {error && <Alert variant="danger" className='text-center'>{errMessage}</Alert>}
+      </div>
     </Modal>
   )
 }
@@ -78,7 +80,7 @@ function ModalComment({ item, parentItem }) {
     <Card className='dn-modal-comment row'>
       <Card.Img className='col-md-2 dn-modal-image-top' variant="top" src={item.user.avatar_url} alt="..." />
       <Card.Body className='col-md-10 dn-modal-comment-body'>
-        
+
         <Card.Title className='text-muted' style={{ 'fontSize': '13px' }}>
           <span className="text-grey mr-2">{`@${parentItem.user.login}`}</span>
           <span className="text-grey mr-2">
@@ -87,11 +89,7 @@ function ModalComment({ item, parentItem }) {
           <span className="text-grey mr-2">{`Comments: ${parentItem.comments}`}</span>
         </Card.Title>
 
-        <Card.Text>
-          <ReactMarkdown source={item.body}></ReactMarkdown>
-        </Card.Text>
-        <a href={item.url}>Link</a>
-
+        <ReactMarkdown source={item.body}></ReactMarkdown>
       </Card.Body>
     </Card>
   )

@@ -29,3 +29,9 @@
 .dn-modal-image-top{
   height: 150px;
 }
+
+.dn-add-ons-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
