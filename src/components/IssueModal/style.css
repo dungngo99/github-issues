@@ -1,0 +1,27 @@
+.dn-modal-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dn-modal-comment-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dn-modal-comment{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.dn-modal-comment-body{
+  padding: 5px;
+}

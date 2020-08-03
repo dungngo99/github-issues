@@ -1,0 +1,17 @@
+.dn-issue-item{
+  display: flex;
+  padding: 0px;
+  margin-bottom: 20px;
+  height: 180px;
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.dn-issue-item:hover{
+  transform: scale(1.03)
+}
+
+.dn-issue-img{
+  height: 100%;
+  padding-left: 0px;
+}
