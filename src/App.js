@@ -14,8 +14,8 @@ function App() {
   const [error, setError] = useState(false);
   const [errMessage, setErrorMessage] = useState("Something wrong");
   const [searchTerm, setSearchTerm] = useState("facebook/react");
-  const [owner, setOwner] = useState("");
-  const [repo, setRepo] = useState("");
+  const [owner, setOwner] = useState("facebook");
+  const [repo, setRepo] = useState('react');
   const [pageNum, setpageNum] = useState(1);
   const [totalPage, setTotalPage] = useState(1)
   const [issueList, setIssueList] = useState(null);
@@ -67,6 +67,7 @@ function App() {
       if (!repo || !owner) return;
 
       setLoading(true);
+      setIssueList([]);
       let url = `https://api.github.com/repos/${owner}/${repo}/issues?page=${pageNum}&per_page=20`;
 
       try {
@@ -83,7 +84,6 @@ function App() {
         setError(true);
         setErrorMessage(error.message);
       }
-
       setLoading(false);
     }
 
@@ -113,7 +113,6 @@ function App() {
         ></PaginationIssue>
 
         {loading && <ClipLoader size={100} color={"red"}></ClipLoader>}
-
         <IssueList issueList={issueList}></IssueList>
       </Container>
     </div>

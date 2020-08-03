@@ -53,7 +53,7 @@ export default function IssueModal({ item, hideModal, show }) {
       </Modal.Header>
 
       <Modal.Body>
-        <ReactMarkdown source={item.body} transformImageUri={(uri) => '...'}></ReactMarkdown>
+        <ReactMarkdown skipHtml={true} source={item.body} transformImageUri={(uri) => '...'}></ReactMarkdown>
       </Modal.Body>
 
       <Modal.Footer className='dn-modal-footer'>
@@ -89,7 +89,7 @@ function ModalComment({ item, parentItem }) {
           <span className="text-grey mr-2">{`Comments: ${parentItem.comments}`}</span>
         </Card.Title>
 
-        <ReactMarkdown source={item.body}></ReactMarkdown>
+        <ReactMarkdown skipHtml={true} source={item.body} transformImageUri={(uri) => '...'}></ReactMarkdown>
       </Card.Body>
     </Card>
   )
