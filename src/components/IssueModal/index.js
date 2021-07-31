@@ -9,7 +9,7 @@ export default function IssueModal({ item, hideModal, show }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false);
   const [errMessage, setErrorMessage] = useState("Something wrong");
-  let [commentList, setCommentList] = useState([])
+  const [commentList, setCommentList] = useState([])
   const [numPage, setNumPage] = useState(0)
 
   const loadMore = (event) => {
@@ -43,7 +43,8 @@ export default function IssueModal({ item, hideModal, show }) {
       setLoading(false)
     }
 
-    if (numPage != 0) fetchComments()
+    if (show) fetchComments()
+    // eslint-disable-next-line
   }, [numPage])
 
   return (

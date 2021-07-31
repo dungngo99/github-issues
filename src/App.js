@@ -46,6 +46,17 @@ function App() {
     }
   };
 
+  const setPage = (num) => { 
+    setpageNum(num)
+  }
+
+  const JumptoPage = () => {
+    const input = parseInt(prompt("Which page do you want to see?"))
+    if (input){
+      setPage(input)
+    }
+  }
+
   const setNextPage = () => {
     setpageNum(pageNum+1)
   }
@@ -68,6 +79,9 @@ function App() {
 
       setLoading(true);
       setIssueList([]);
+      setErrorMessage('')
+      setError(false)
+
       let url = `https://api.github.com/repos/${owner}/${repo}/issues?page=${pageNum}&per_page=20`;
 
       try {
@@ -108,8 +122,11 @@ function App() {
           setPrevPage={setPrevPage}
           setLastPage={setLastPage}
           setFirstPage={setFirstPage}
+          JumptoPage={JumptoPage}
+          setPage={setPage}
           pageNum={pageNum}
           totalPage={totalPage}
+          loading={loading}
         ></PaginationIssue>
 
         {loading && <ClipLoader size={100} color={"red"}></ClipLoader>}
